@@ -11,10 +11,30 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 public class GUI_Radio {
-
+	/*Atributos de la GUI*/
 	private JFrame frame;
 	private JTextField txtPantalla;
+	
+	/*Botones extras*/
+	public JRadioButton rdEncendido;
+	public JButton btnEncender;
+	public JButton btnAtras;
+	public JButton btnAdelante;
 
+	/*Atributos de los botonos*/
+	public JButton btn1;
+	public JButton btn2;
+	public JButton btn3;
+	public JButton btn4;
+	public JButton btn5;
+	public JButton btn6;
+	public JButton btn7;
+	public JButton btn8;
+	public JButton btn9;
+	public JButton btn10;
+	public JButton btn11;
+	public JButton btn12;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -59,20 +79,20 @@ public class GUI_Radio {
 		Radio.add(txtPantalla);
 		txtPantalla.setColumns(10);
 		
-		JRadioButton rdEncendido = new JRadioButton("Encendido");
+		rdEncendido = new JRadioButton("Encendido");
 		rdEncendido.setEnabled(false);
 		rdEncendido.setBounds(318, 56, 99, 23);
 		Radio.add(rdEncendido);
 		
-		JButton btnEncender = new JButton("ENCENDER");
+		btnEncender = new JButton("ENCENDER");
 		btnEncender.setBounds(322, 27, 95, 23);
 		Radio.add(btnEncender);
 		
-		JButton btnAtras = new JButton("Atras");
+		btnAtras = new JButton("<<<");
 		btnAtras.setBounds(10, 90, 89, 23);
 		Radio.add(btnAtras);
 		
-		JButton btnAdelante = new JButton("Adelante");
+		btnAdelante = new JButton(">>>");
 		btnAdelante.setBounds(109, 90, 89, 23);
 		Radio.add(btnAdelante);
 		
@@ -80,51 +100,52 @@ public class GUI_Radio {
 		btnCambiarFrec.setBounds(208, 90, 209, 23);
 		Radio.add(btnCambiarFrec);
 		
-		JButton btn1 = new JButton("1");
+		btn1 = new JButton("1");
 		btn1.setBounds(10, 134, 89, 23);
 		Radio.add(btn1);
+		btn1.addActionListener(new MiBoton());
 		
-		JButton btn2 = new JButton("2");
+		btn2 = new JButton("2");
 		btn2.setBounds(10, 168, 89, 23);
 		Radio.add(btn2);
 		
-		JButton bnt3 = new JButton("3");
-		bnt3.setBounds(10, 202, 89, 23);
-		Radio.add(bnt3);
+		btn3 = new JButton("3");
+		btn3.setBounds(10, 202, 89, 23);
+		Radio.add(btn3);
 		
-		JButton btn4 = new JButton("4");
+		btn4 = new JButton("4");
 		btn4.setBounds(109, 134, 89, 23);
 		Radio.add(btn4);
 		
-		JButton bnt7 = new JButton("7");
-		bnt7.setBounds(208, 134, 89, 23);
-		Radio.add(bnt7);
+		btn7 = new JButton("7");
+		btn7.setBounds(208, 134, 89, 23);
+		Radio.add(btn7);
 		
-		JButton btn10 = new JButton("10");
+		btn10 = new JButton("10");
 		btn10.setBounds(307, 134, 89, 23);
 		Radio.add(btn10);
 		
-		JButton btn5 = new JButton("5");
+		btn5 = new JButton("5");
 		btn5.setBounds(109, 168, 89, 23);
 		Radio.add(btn5);
 		
-		JButton btn6 = new JButton("6");
+		btn6 = new JButton("6");
 		btn6.setBounds(109, 202, 89, 23);
 		Radio.add(btn6);
 		
-		JButton btn7 = new JButton("8");
+		btn7 = new JButton("8");
 		btn7.setBounds(208, 168, 89, 23);
 		Radio.add(btn7);
 		
-		JButton btn9 = new JButton("9");
+		btn9 = new JButton("9");
 		btn9.setBounds(208, 202, 89, 23);
 		Radio.add(btn9);
 		
-		JButton btn11 = new JButton("11");
+		btn11 = new JButton("11");
 		btn11.setBounds(307, 168, 89, 23);
 		Radio.add(btn11);
 		
-		JButton btn12 = new JButton("12");
+		btn12 = new JButton("12");
 		btn12.setBounds(307, 202, 89, 23);
 		Radio.add(btn12);
 		
@@ -135,5 +156,16 @@ public class GUI_Radio {
 		JLabel lblFmOAm = new JLabel("FM O AM");
 		lblFmOAm.setBounds(101, 236, 46, 14);
 		Radio.add(lblFmOAm);
+	}
+	private class MiBoton implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			/*Codigo para el boton de encender*/
+			if (e.getSource()==btnEncender) {
+			}
+			
+		}
+		
 	}
 }
