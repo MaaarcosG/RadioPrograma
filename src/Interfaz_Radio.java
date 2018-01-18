@@ -8,4 +8,6 @@ public interface Interfaz_Radio {
 	public void guardarFrecAm(int frec, int pos);
 	public void guardarFrecFm(float frec, int pos);
 	public String mostrasEstacion();
+	public boolean estaPrendido();
+	public String obtenerEstacion();
 }
