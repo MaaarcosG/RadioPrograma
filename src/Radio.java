@@ -18,6 +18,10 @@ public class Radio implements Interfaz_Radio {
 		estadoGuardado  = new String [12][2];
 		
 	}
+	/**
+	 * Metodo con el cual la frecuencia ira sumanndo
+	 * @return frecActual
+	 */
 	@Override
 	public String frecAdelante() {
 		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
@@ -44,7 +48,10 @@ public class Radio implements Interfaz_Radio {
 		System.out.println(frecActual);
 		return frecActual;
 	}
-
+	/**
+	 * Metodo con el cual se ira para atras en cada frecuencia
+	 * @return frecActual
+	 */
 	@Override
 	public String frecAtras() {
 		System.out.println(frecActual);
@@ -70,27 +77,61 @@ public class Radio implements Interfaz_Radio {
 		}
 		return frecActual	;
 	}
-
+	/**
+	 * Metodo que apaga la radio
+	 * @return estadoDelRadio
+	 */
 	@Override
 	public boolean apagar() {
-		return false;
+		/*Verificaremos que el estado del radio este apagado*/
+		estadoDelRadio = false;
+		return estadoDelRadio;
 	}
-
+	/**
+	 * Metodo que enciende la radio
+	 * @return estadoDelRadio
+	 */
 	@Override
 	public boolean encender() {
-		return false;
+		/*Verifcaremos que el estado del radio este encendido*/
+		estadoDelRadio = true;
+		frecActual = "87.9";
+		return estadoDelRadio;
 	}
-
+	/**
+	 * Este método cambiaremos el estado de la frecuencia entre FM y AM
+	 * @param frecActual
+	 */
 	@Override
 	public String cambioFrecuencia() {
-		return null;
+		/*Si es FM cambiara a AM*/
+		if (frecActual.equals("fm")) {
+			frecActual = "am";
+			frecActual = "530";
+			/*Si es AM cambiara FM*/
+		} else if (frecActual.equals("am")) {
+			frecActual = "fm";
+			frecActual = "87.9";
+		}
+		return frecActual;
 	}
-
+	/**
+	 * Metodo (Matriz) que guardara en cada boton la estacion deseada, guarda AM
+	 * @param frec and pos
+	 */
 	@Override
 	public void guardarFrecAm(int frec, int pos) {
-		
+		/*Compararemos los limistes de cada frecuencia para guardarlo */
+		if (frec <= 1610 && frec>= 530 && frec % 10 == 0 && pos >= 0 && pos >= 12) {
+			/*Guardamos en la matriz*/
+			estadoGuardado[pos][0] = String.valueOf(frec);
+			estadoGuardado[pos][1] = "AM";
+		}
 	}
-
+	/**
+	 * Metodo (Matriz) que guardara en cada boton la estacion deseado, guarda FM
+	 * @param frec and pos
+	 */
 	@Override
 	public void guardarFrecFm(float frec, int pos) {
 		
