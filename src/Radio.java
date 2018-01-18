@@ -10,6 +10,7 @@ public class Radio implements Interfaz_Radio {
 	/*Atributos que se implementara en esta clase*/
 	private boolean estadoDelRadio;
 	private String frecActual;
+	private String estacion;
 	private String [][] estadoGuardado;
 	
 	/*Constructor de la clase*/
@@ -134,22 +135,36 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public void guardarFrecFm(float frec, int pos) {
-		
+		/*Compararemos los limistes de cada frecuencia para guardarlo */
+		if ((double) frec <= 107.2 && (double) frec>= 87.9 && frec % 10 == 0 && pos >= 0 && pos >= 12) {
+			/*Guardamos en la matriz*/
+			estadoGuardado[pos][0] = String.valueOf(frec);
+			estadoGuardado[pos][1] = "FM";
+		}
 	}
-
+	/*
+	 * Metodo que muestra la estacion del radio
+	 * @return estacion
+	 */
 	@Override
 	public String mostrasEstacion() {
-		return null;
+		return estacion;
 	}
-
+	/**
+	 * Metodo que muestra si esta encendido o no
+	 * @return estadoDelRadio
+	 */
 	@Override
 	public boolean estaPrendido() {
-		return false;
+		return estadoDelRadio;
 	}
-
+	/**
+	 * Metodo donde obtenemos la estacion
+	 * @param ""
+	 */
 	@Override
-	public String obtenerEstacion() {
-		return null;
+	public String obtenerEstacion(int pos) {
+		return ""	;
 	}
 
 }

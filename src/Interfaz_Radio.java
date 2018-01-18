@@ -9,5 +9,5 @@ public interface Interfaz_Radio {
 	public void guardarFrecFm(float frec, int pos);
 	public String mostrasEstacion();
 	public boolean estaPrendido();
-	public String obtenerEstacion();
+	public String obtenerEstacion(int pos);
 }
