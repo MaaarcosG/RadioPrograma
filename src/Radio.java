@@ -9,26 +9,66 @@
 public class Radio implements Interfaz_Radio {
 	/*Atributos que se implementara en esta clase*/
 	private boolean estadoDelRadio;
-	private String frecAM;
-	private String frecFM;
+	private String frecActual;
 	private String [][] estadoGuardado;
 	
 	/*Constructor de la clase*/
 	public Radio() {
 		estadoDelRadio = false;
-		frecAM = "530";
-		frecFM = "87.9";
 		estadoGuardado  = new String [12][2];
 		
 	}
 	@Override
 	public String frecAdelante() {
-		return null;
+		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
+		if (FA == 530) {
+			/*Se dara valor a AM*/
+			/*Ira sumando en 10 en 10*/
+			if (FA >= 1610) {
+				/*Si es mayor o igual a 1610, entonces el valor regresara al inicial*/
+				frecActual = "530";
+			} else {
+				/*Se suman 10*/
+				FA += 10;
+			} 
+		} else {
+			if(FA == 87.9) {
+				/*Suma 0.2 debido a que es frecuencia AM*/
+				FA += 0.2;
+			} else if (FA >= 107.9) {
+				/*Si es mayor o igual a 107.9, entonces se devolverala el valor inicial	*/
+				frecActual = "87.9";
+			}
+		}
+		/*Retornamos la frecuencia actual*/
+		System.out.println(frecActual);
+		return frecActual;
 	}
 
 	@Override
 	public String frecAtras() {
-		return null;
+		System.out.println(frecActual);
+		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
+		if (FA == 530) {
+			/*Se dara valor a AM*/
+			/*Ira restando en 10 en 10*/
+			if (FA >= 1610) {
+				/*Si es mayor o igual a 1610, entonces el valor regresara al inicial*/
+				frecActual = "530";
+			} else {
+				/*Se suman 10*/
+				FA -= 10;
+			} 
+		} else {
+			if(FA == 87.9) {
+				/*Suma 0.2 debido a que es frecuencia AM*/
+				FA -= 0.2;
+			} else if (FA >= 107.9) {
+				/*Si es mayor o igual a 107.9, entonces se devolverala el valor inicial	*/
+				frecActual = "87.9";
+			}
+		}
+		return frecActual	;
 	}
 
 	@Override
