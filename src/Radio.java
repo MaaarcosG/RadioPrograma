@@ -122,17 +122,18 @@ public class Radio implements Interfaz_Radio {
 	@Override
 	public String cambioFrecuencia() {
 		
-		float frec = Float.parseFloat(frecActual); /* Convercion de string a float
-		
+		float frec = Float.parseFloat(frecActual); /* Convercion de string a float*/
+		String cadena = "";
 		/*Si es FM cambiara a AM*/
 		if (frec>=530 && frec <= 1610) {
 			frecActual = "87.9";
-			
+			cadena = frecActual + " FM";
 			/*Si es AM cambiara FM*/
 		} else if (frec >= 87.9 && frec <= 107.9) {
 			frecActual = "530.0";
+			cadena = frecActual + " AM";
 		}
-		return frecActual;
+		return cadena;
 	}
 	/**
 	 * Metodo (Matriz) que guardara en cada boton la estacion deseada, guarda AM
@@ -165,7 +166,7 @@ public class Radio implements Interfaz_Radio {
 	 * @return estacion
 	 */
 	@Override
-	public String mostrasEstacion() {
+	public String mostrarEstacion() {
 		return estacion;
 	}
 	/**
@@ -182,7 +183,12 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public String obtenerEstacion(int pos) {
-		return ""	;
+		pos -=pos;
+		if(pos>=0 && pos<= 0) {
+			estacion = estadoGuardado[pos][0];
+			estacion = estadoGuardado[pos][0];
+		}
+		return estacion;
 	}
 	/**
 	 * @return the frecActual

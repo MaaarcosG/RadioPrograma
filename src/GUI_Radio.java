@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class GUI_Radio {
 	/*Llamamos a la clase radio*/
@@ -83,6 +84,7 @@ public class GUI_Radio {
 		Radio.setLayout(null);
 		
 		txtPantalla = new JTextField();
+		txtPantalla.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		txtPantalla.setEnabled(false);
 		txtPantalla.setBounds(10, 40, 302, 39);
 		Radio.add(txtPantalla);
@@ -264,7 +266,11 @@ public class GUI_Radio {
 				/*cadena*/
 				txtPantalla.setText("Esta escuchando " + nueva);
 			}
-			
+			/*Boton guardar espacio 1*/
+			if(e.getSource().equals(btn1)) {
+				txtPantalla.setText("Estacion" + radio.obtenerEstacion(1));
+				JOptionPane.showMessageDialog(btn1, "Se guardo correctamente" + radio.getFrecuencia());
+			}
 			
 		}
 		

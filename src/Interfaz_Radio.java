@@ -12,7 +12,7 @@ public interface Interfaz_Radio {
 	public String cambioFrecuencia();
 	public void guardarFrecAm(int frec, int pos);
 	public void guardarFrecFm(float frec, int pos);
-	public String mostrasEstacion();
+	public String mostrarEstacion();
 	public boolean estaPrendido();
 	public String obtenerEstacion(int pos);
 }
