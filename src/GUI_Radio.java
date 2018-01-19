@@ -121,56 +121,67 @@ public class GUI_Radio {
 		btn2.setEnabled(false);
 		btn2.setBounds(10, 168, 89, 23);
 		Radio.add(btn2);
+		btn2.addActionListener(new MiBoton());
 		
 		btn3 = new JButton("3");
 		btn3.setEnabled(false);
 		btn3.setBounds(10, 202, 89, 23);
 		Radio.add(btn3);
+		btn3.addActionListener(new MiBoton());
 		
 		btn4 = new JButton("4");
 		btn4.setEnabled(false);
 		btn4.setBounds(109, 134, 89, 23);
 		Radio.add(btn4);
+		btn4.addActionListener(new MiBoton());
 		
 		btn7 = new JButton("7");
 		btn7.setEnabled(false);
 		btn7.setBounds(208, 134, 89, 23);
 		Radio.add(btn7);
+		btn4.addActionListener(new MiBoton());
 		
 		btn10 = new JButton("10");
 		btn10.setEnabled(false);
 		btn10.setBounds(307, 134, 89, 23);
 		Radio.add(btn10);
+		btn10.addActionListener(new MiBoton());
 		
 		btn5 = new JButton("5");
 		btn5.setEnabled(false);
 		btn5.setBounds(109, 168, 89, 23);
 		Radio.add(btn5);
+		btn5.addActionListener(new MiBoton());
 		
 		btn6 = new JButton("6");
 		btn6.setEnabled(false);
 		btn6.setBounds(109, 202, 89, 23);
 		Radio.add(btn6);
+		btn6.addActionListener(new MiBoton());
 		
 		btn7_1 = new JButton("8");
 		btn7_1.setEnabled(false);
 		btn7_1.setBounds(208, 168, 89, 23);
 		Radio.add(btn7_1);
+		btn7.addActionListener(new MiBoton());
 		
 		btn9 = new JButton("9");
 		btn9.setEnabled(false);
 		btn9.setBounds(208, 202, 89, 23);
 		Radio.add(btn9);
+		btn9.addActionListener(new MiBoton());
 		
 		btn11 = new JButton("11");
 		btn11.setEnabled(false);
 		btn11.setBounds(307, 168, 89, 23);
 		Radio.add(btn11);
+		btn11.addActionListener(new MiBoton());
 		
 		btn12 = new JButton("12");
 		btn12.setEnabled(false);
 		btn12.setBounds(307, 202, 89, 23);
 		Radio.add(btn12);
+		btn12.addActionListener(new MiBoton());
 		
 		btnEncender = new JButton("ENCENDER");
 		btnEncender.setBounds(10, 238, 95, 23);
