@@ -209,13 +209,18 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public String obtenerEstado() {
+		
+		float FA = Float.parseFloat(frecActual);
+		
 		/*Estado de la radio*/
-		if (frecActual == "530") {
+		if (FA>= 530 && FA <= 1610) {
 			/*Estado AM*/
 			return "AM";
 		} else {
+			if (FA >= 87.9 && FA <= 108.1) {
 			/*Estado FM*/
 			return "FM";
+			}
 		}
 	}
 	
