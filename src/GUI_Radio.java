@@ -9,9 +9,13 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 public class GUI_Radio {
+	/*Llamamos a la clase radio*/
+	Radio radio;
+	
 	/*Atributos de la GUI*/
 	private JFrame frame;
 	private JTextField txtPantalla;
@@ -60,6 +64,7 @@ public class GUI_Radio {
 	 */
 	public GUI_Radio() {
 		initialize();
+		radio = new Radio();
 	}
 
 	/**
@@ -92,16 +97,19 @@ public class GUI_Radio {
 		btnAtras.setEnabled(false);
 		btnAtras.setBounds(10, 90, 89, 23);
 		Radio.add(btnAtras);
+		btnAtras.addActionListener(new MiBoton());
 		
 		btnAdelante = new JButton(">>>");
 		btnAdelante.setEnabled(false);
 		btnAdelante.setBounds(109, 90, 89, 23);
 		Radio.add(btnAdelante);
+		btnAdelante.addActionListener(new MiBoton());
 		
 		btnCambiarFrec = new JButton("Cambiar Frecuencia");
 		btnCambiarFrec.setEnabled(false);
 		btnCambiarFrec.setBounds(208, 90, 209, 23);
 		Radio.add(btnCambiarFrec);
+		btnCambiarFrec.addActionListener(new MiBoton());
 		
 		btn1 = new JButton("1");
 		btn1.setEnabled(false);
@@ -164,10 +172,6 @@ public class GUI_Radio {
 		btn12.setBounds(307, 202, 89, 23);
 		Radio.add(btn12);
 		
-		JLabel lblFrecuencia = new JLabel("FRECUENCIA");
-		lblFrecuencia.setBounds(322, 35, 81, 14);
-		Radio.add(lblFrecuencia);
-		
 		btnEncender = new JButton("ENCENDER");
 		btnEncender.setBounds(10, 238, 95, 23);
 		Radio.add(btnEncender);
@@ -184,6 +188,7 @@ public class GUI_Radio {
 		public void actionPerformed(ActionEvent e) {
 			/*Codigo para el boton de encender*/
 			if (e.getSource().equals(btnEncender)) {
+				JOptionPane.showMessageDialog(null, "LA RADIO SE ENCENDIO");
 				/*Indicara que se encuentra encendido la radio*/
 				btnAtras.setEnabled(true);
 				btnAdelante.setEnabled(true);
@@ -204,6 +209,7 @@ public class GUI_Radio {
 			}
 			/*Condicion que funciona para apagar la radio*/
 			if(e.getSource().equals(btnApagar)) {
+				JOptionPane.showMessageDialog(null, "LA RADIO SE APAGO");
 				/*False que sirve para que se bloque los botones y saber que se apagaron*/
 				btnAtras.setEnabled(false);
 				btnAdelante.setEnabled(false);
@@ -221,6 +227,27 @@ public class GUI_Radio {
 				btn10.setEnabled(false);
 				btn11.setEnabled(false);
 				btn12.setEnabled(false);
+			}
+			/*Boton para cambiar la frecuencia*/
+			if (e.getSource().equals(btnCambiarFrec)) {
+				/*Condicion que sirve para indicar a que frecuencia esta cambiando*/
+				
+			}
+			/*Boton para cambiar la frecuencia*/
+			if (e.getSource().equals(btnAdelante)) {
+				/*Implementa el metodo de sumar a la frecuencia*/
+				String nueva;
+				nueva = radio.frecAdelante();
+				/*cadena*/
+				txtPantalla.setText("Esta escuchando " + nueva);
+			}
+			/*Boton para cambiar la frecuencia*/
+			if(e.getSource().equals(btnAtras)) {
+				/*Implementa el metodo de restar a la frecuencia*/
+				String nueva;
+				nueva = radio.frecAtras();
+				/*cadena*/
+				txtPantalla.setText("Esta escuchando " + nueva);
 			}
 			
 		}

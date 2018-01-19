@@ -15,6 +15,7 @@ public class Radio implements Interfaz_Radio {
 	
 	/*Constructor de la clase*/
 	public Radio() {
+		frecActual = "530";
 		estadoDelRadio = false;
 		estadoGuardado  = new String [12][2];
 		
@@ -26,27 +27,27 @@ public class Radio implements Interfaz_Radio {
 	@Override
 	public String frecAdelante() {
 		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
-		if (FA == 530) {
-			/*Se dara valor a AM*/
-			/*Ira sumando en 10 en 10*/
-			if (FA >= 1610) {
-				/*Si es mayor o igual a 1610, entonces el valor regresara al inicial*/
+		/*Condicion que nos ayuda a saber si sumar en AM o en FM*/
+		if(FA % 5 == 0) {
+			/*Si la estacion es igual a 1610, iniciara de nuevo el conteo*/
+			if(FA == 1610) {
 				frecActual = "530";
 			} else {
-				/*Se suman 10*/
+				/*Si no es igual, se sumara 10*/
 				FA += 10;
-			} 
+				frecActual = FA + "";
+			}
 		} else {
-			if(FA == 87.9) {
-				/*Suma 0.2 debido a que es frecuencia AM*/
-				FA += 0.2;
-			} else if (FA >= 107.9) {
-				/*Si es mayor o igual a 107.9, entonces se devolverala el valor inicial	*/
-				frecActual = "87.9";
+			if(FA < 107.9 || FA > 87.9) {
+				/**/
+				if(FA == 107.9) {
+					frecActual = "87.9";
+				} else {
+					FA += 0.2;
+					frecActual = FA + "";
+				}
 			}
 		}
-		/*Retornamos la frecuencia actual*/
-		System.out.println(frecActual);
 		return frecActual;
 	}
 	/**
@@ -55,28 +56,29 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public String frecAtras() {
-		System.out.println(frecActual);
 		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
-		if (FA == 530) {
-			/*Se dara valor a AM*/
-			/*Ira restando en 10 en 10*/
-			if (FA >= 1610) {
-				/*Si es mayor o igual a 1610, entonces el valor regresara al inicial*/
+		/*Condicion que nos ayuda a saber si sumar en AM o en FM*/
+		if(FA % 3 == 0) {
+			/*Si la estacion es igual a 1610, iniciara de nuevo el conteo*/
+			if(FA >= 1610) {
 				frecActual = "530";
 			} else {
-				/*Se suman 10*/
+				/*Si no es igual, se sumara 10*/
 				FA -= 10;
-			} 
+				frecActual = FA + "";
+			}
 		} else {
-			if(FA == 87.9) {
-				/*Suma 0.2 debido a que es frecuencia AM*/
-				FA -= 0.2;
-			} else if (FA >= 107.9) {
-				/*Si es mayor o igual a 107.9, entonces se devolverala el valor inicial	*/
-				frecActual = "87.9";
+			if(FA < 107.9 || FA > 87.9) {
+				/**/
+				if(FA >= 107.9) {
+					frecActual = "87.9";
+				} else {
+					FA -= 0.2;
+					frecActual = FA + "";
+				}
 			}
 		}
-		return frecActual	;
+		return frecActual;
 	}
 	/**
 	 * Metodo que apaga la radio
