@@ -13,8 +13,11 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 
 public class GUI_Radio {
+<<<<<<< HEAD
 	/*Llamamos a la clase radio*/
 	Radio radio;
+=======
+>>>>>>> branch 'master' of https://github.com/MaaarcosG/RadioPrograma.git
 	
 	/*Atributos de la GUI*/
 	private JFrame frame;
