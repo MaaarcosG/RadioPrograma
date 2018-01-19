@@ -14,6 +14,14 @@ public class RadioTest {
 		assertEquals(expected, actual);
 	}
 
-
+	/* Test para comprobar que la radio se apague correctamente */
+	@Test
+	public void testDeApagado() {
+		Radio radio = new Radio();
+		boolean expected = false; /* Para que la radio este apagado debe devolver false */
+		boolean actual = radio.apagar();
+		assertEquals(expected, actual);
+	}
+	
 
 }
