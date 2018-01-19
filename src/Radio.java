@@ -11,15 +11,15 @@ public class Radio implements Interfaz_Radio {
 	private boolean estadoDelRadio;
 	private String frecActual;
 	private String estacion;
-	private String [][] estadoGuardado;
-	private String[] tipofres;
+	private int frecAM[];
+	private double frecFM[];
 	
 	/*Constructor de la clase*/
 	public Radio() {
 		frecActual = "530.0";
 		estadoDelRadio = false;
-		estadoGuardado  = new String [12][2];
-		
+		frecAM = new int[12];
+		frecFM = new double[12];
 	}
 	/**
 	 * Metodo con el cual la frecuencia ira sumanndo
@@ -86,8 +86,7 @@ public class Radio implements Interfaz_Radio {
 					/*Si no se restaran 10 */
 					else {
 						FA -= 0.2;
-						frecActual = String.format("%.01f", FA); /* Da formato de 1 digito a la frec*/
-					
+						frecActual = String.format("%.01f", FA); /*Da formato de 1 digito a la frec*/
 					
 				}
 			}
@@ -135,39 +134,13 @@ public class Radio implements Interfaz_Radio {
 		}
 		return cadena;
 	}
-	/**
-	 * Metodo (Matriz) que guardara en cada boton la estacion deseada, guarda AM
-	 * @param frec and pos
-	 */
-	@Override
-	public void guardarFrecAm(int frec, int pos) {
-		/*Compararemos los limistes de cada frecuencia para guardarlo */
-		if (frec <= 1610 && frec>= 530 && frec % 10 == 0 && pos >= 0 && pos >= 12) {
-			/*Guardamos en la matriz*/
-			estadoGuardado[pos][0] = String.valueOf(frec);
-			estadoGuardado[pos][1] = "AM";
-		}
-	}
-	/**
-	 * Metodo (Matriz) que guardara en cada boton la estacion deseado, guarda FM
-	 * @param frec and pos
-	 */
-	@Override
-	public void guardarFrecFm(float frec, int pos) {
-		/*Compararemos los limistes de cada frecuencia para guardarlo */
-		if ((double) frec <= 107.2 && (double) frec>= 87.9 && frec % 10 == 0 && pos >= 0 && pos >= 12) {
-			/*Guardamos en la matriz*/
-			estadoGuardado[pos][0] = String.valueOf(frec);
-			estadoGuardado[pos][1] = "FM";
-		}
-	}
 	/*
 	 * Metodo que muestra la estacion del radio
 	 * @return estacion
 	 */
 	@Override
 	public String mostrarEstacion() {
-		return estacion;
+		return this.getFrecuencia();
 	}
 	/**
 	 * Metodo que muestra si esta encendido o no
@@ -183,12 +156,19 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public String obtenerEstacion(int pos) {
-		pos -=pos;
-		if(pos>=0 && pos<= 0) {
-			estacion = estadoGuardado[pos][0];
-			estacion = estadoGuardado[pos][0];
+		/*Convierto en double-String*/
+		Double frec = Double.parseDouble(frecActual);
+		if(pos >-1 && pos<12) {
+			/*Si la frecuencia es 530*/
+			if (frecActual == "530") {
+				/*Guardara en la posicion la estacion*/
+				frec = (double) frecAM[pos];
+			} else {
+				/*Si la frecuencia es diferente a 530, guardara la estacion*/
+				frec = frecFM[pos];
+			}
 		}
-		return estacion;
+		return String.valueOf(frec);
 	}
 	/**
 	 * @return the frecActual
@@ -201,6 +181,37 @@ public class Radio implements Interfaz_Radio {
 	 */
 	public void setFrecuencia(String frecActual) {
 		frecActual = this.frecActual;
+	}
+	/**
+	 * Este metodo guarda la estacion 
+	 * @param int pos
+	 */
+	@Override
+	public void guardarEstacion(int pos) {
+		if(pos >-1 && pos <12) {
+			if(frecActual == "530") {
+				/*Si la frecuencia esta en AM*/
+				frecAM[pos] = 530;
+			} else {
+				/*Si la frecuencia esta en FM*/
+				frecFM[pos] = 87.9;
+			}
+		}	
+	}
+	/*
+	 * Este metodo obtiene el estado de la radio
+	 * @see Interfaz_Radio#obtenerEstado()
+	 */
+	@Override
+	public String obtenerEstado() {
+		/*Estado de la radio*/
+		if (frecActual == "530") {
+			/*Estado AM*/
+			return "AM";
+		} else {
+			/*Estado FM*/
+			return "FM";
+		}
 	}
 	
 }

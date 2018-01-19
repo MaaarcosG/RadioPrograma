@@ -247,7 +247,7 @@ public class GUI_Radio {
 			if (e.getSource().equals(btnCambiarFrec)) {
 				/*Condicion que sirve para indicar a que frecuencia esta cambiando*/
 				radio.cambioFrecuencia();
-				txtPantalla.setText("Esta escuchando: " + radio.getFrecuencia());
+				txtPantalla.setText("Esta escuchando: " + radio.mostrarEstacion());
 				
 			}
 			/*Boton para cambiar la frecuencia*/
@@ -268,9 +268,9 @@ public class GUI_Radio {
 			}
 			/*Boton guardar espacio 1*/
 			if(e.getSource().equals(btn1)) {
-				txtPantalla.setText("Estacion" + radio.obtenerEstacion(1));
+				txtPantalla.setText("Estacion " + radio.obtenerEstacion(1));
 				/*Muestra un mensje de confirmacion*/
-				JOptionPane.showMessageDialog(btn1, "Se guardo correctamente " + radio.getFrecuencia());
+				JOptionPane.showMessageDialog(null, "Se guardo correctamente " + radio.getFrecuencia());
 			}
 			
 		}
