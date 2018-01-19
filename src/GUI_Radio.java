@@ -13,6 +13,14 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
+/*
+ * @author Marcos Gutierrrez 
+ * @author Claude Calewaert 
+ * @since 18 de enero 2018
+ * @version beta 2.0.1
+ * @propuse Esta clase tiene como objetivo generar la interfaz grafica de usuario
+*/
+
 public class GUI_Radio {
 	/*Llamamos a la clase radio*/
 	Radio radio;

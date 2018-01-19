@@ -1,5 +1,6 @@
 /**
  * @author Marcos Gutierrrez 
+ * @author Claude Calewaert 
  * @since 18 de enero 2018
  * @version beta 2.0.1
  * @propuse Este programa tengra implementada la clase Interfaz_Radio, 
