@@ -245,14 +245,7 @@ public class GUI_Radio {
 				/*cadena*/
 				txtPantalla.setText("Esta escuchando " + nueva);
 			}
-			/*Boton para cambiar la frecuencia*/
-			if(e.getSource().equals(btnAtras)) {
-				/*Implementa el metodo de restar a la frecuencia*/
-				String nueva;
-				nueva = radio.frecAtras();
-				/*cadena*/
-				txtPantalla.setText("Esta escuchando " + nueva);
-			}
+			
 			
 		}
 		
