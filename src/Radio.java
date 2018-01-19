@@ -215,13 +215,14 @@ public class Radio implements Interfaz_Radio {
 		/*Estado de la radio*/
 		if (FA>= 530 && FA <= 1610) {
 			/*Estado AM*/
-			return "AM";
+			estacion = "AM";
 		} else {
 			if (FA >= 87.9 && FA <= 108.1) {
 			/*Estado FM*/
-			return "FM";
+			estacion = "FM";
 			}
 		}
+		return estacion;
 	}
 	
 }
