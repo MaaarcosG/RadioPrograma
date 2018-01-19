@@ -12,10 +12,11 @@ public class Radio implements Interfaz_Radio {
 	private String frecActual;
 	private String estacion;
 	private String [][] estadoGuardado;
+	private String[] tipofres;
 	
 	/*Constructor de la clase*/
 	public Radio() {
-		frecActual = "530";
+		frecActual = "530.0";
 		estadoDelRadio = false;
 		estadoGuardado  = new String [12][2];
 		
@@ -31,7 +32,7 @@ public class Radio implements Interfaz_Radio {
 		if(FA % 5 == 0) {
 			/*Si la estacion es igual a 1610, iniciara de nuevo el conteo*/
 			if(FA == 1610) {
-				frecActual = "530";
+				frecActual = "530.0";
 			} else {
 				/*Si no es igual, se sumara 10*/
 				FA += 10;
@@ -61,7 +62,7 @@ public class Radio implements Interfaz_Radio {
 		if(FA % 3 == 0) {
 			/*Si la estacion es igual a 1610, iniciara de nuevo el conteo*/
 			if(FA >= 1610) {
-				frecActual = "530";
+				frecActual = "530.0";
 			} else {
 				/*Si no es igual, se sumara 10*/
 				FA -= 10;
@@ -107,14 +108,17 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public String cambioFrecuencia() {
+		
+		float frec;
+		frec = Float.parseFloat(frecActual);
+		
 		/*Si es FM cambiara a AM*/
-		if (frecActual.equals("87.9")) {
-			frecActual = "am";
-			frecActual = "530";
-			/*Si es AM cambiara FM*/
-		} else if (frecActual.equals("530")) {
-			frecActual = "fm";
+		if (frec>=530 && frec <= 1610) {
 			frecActual = "87.9";
+			
+			/*Si es AM cambiara FM*/
+		} else if (frec >= 87.9 && frec <= 107.9) {
+			frecActual = "530.0";
 		}
 		return frecActual;
 	}
