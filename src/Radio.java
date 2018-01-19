@@ -11,15 +11,15 @@ public class Radio implements Interfaz_Radio {
 	private boolean estadoDelRadio;
 	private String frecActual;
 	private String estacion;
-	private int frecAM[];
-	private double frecFM[];
+	private String frecAM[];
+	private String frecFM[];
 	
 	/*Constructor de la clase*/
 	public Radio() {
-		frecActual = "530.0";
+		frecActual = "87.9";
 		estadoDelRadio = false;
-		frecAM = new int[12];
-		frecFM = new double[12];
+		frecAM = new String[12];
+		frecFM = new String[12];
 	}
 	/**
 	 * Metodo con el cual la frecuencia ira sumanndo
@@ -108,10 +108,15 @@ public class Radio implements Interfaz_Radio {
 	 * @return estadoDelRadio
 	 */
 	@Override
-	public boolean encender() {
+	public boolean prender() {
 		/*Verifcaremos que el estado del radio este encendido*/
 		estadoDelRadio = true;
-		frecActual = "87.9";
+		this.frecActual = "87.9";
+		for(int i = 0; i <12; i++) {
+			this.frecAM[i] = "530";
+			this.frecFM[i] = "87.9";
+		}
+		
 		return estadoDelRadio;
 	}
 	/**
@@ -156,20 +161,18 @@ public class Radio implements Interfaz_Radio {
 	 */
 	@Override
 	public String obtenerEstacion(int pos) {
-		/*Convierto en double-String*/
-		Double frec = Double.parseDouble(frecActual);
 		if(pos >-1 && pos<12) {
 			/*Si la frecuencia es 530*/
 			if (frecActual == "530") {
 				/*Guardara en la posicion la estacion*/
-				frec = (double) frecAM[pos];
+				frecActual = frecAM[pos];
 			} else {
 				/*Si la frecuencia es diferente a 530, guardara la estacion*/
-				frec = frecFM[pos];
+				frecActual = frecFM[pos];
 			}
 		}
 		/*Devuelve el valor de la frecuencia*/
-		return String.valueOf(frec);
+		return frecActual;
 	}
 	/**
 	 * @return the frecActual
@@ -188,14 +191,13 @@ public class Radio implements Interfaz_Radio {
 	 * @param int pos
 	 */
 	@Override
-	public void guardarEstacion(int pos) {
+	public void guardarEstacionActual(int pos) {
 		if(pos >-1 && pos <12) {
-			if(frecActual == "530") {
-				/*Si la frecuencia esta en AM*/
-				frecAM[pos] = 530;
-			} else {
-				/*Si la frecuencia esta en FM*/
-				frecFM[pos] = 87.9;
+			float estacion = Float.parseFloat(this.frecActual);
+			if(estacion > 520) {
+				this.frecAM[pos] = this.frecActual;
+			}else {
+				this.frecFM[pos] = this.frecActual;
 			}
 		}	
 	}

@@ -8,9 +8,9 @@ public interface Interfaz_Radio {
 	public String frecAdelante();
 	public String frecAtras();
 	public boolean apagar();
-	public boolean encender();
+	public boolean prender();
 	public String cambioFrecuencia();
-	public void guardarEstacion(int pos);
+	public void guardarEstacionActual(int pos);
 	public String obtenerEstacion(int pos);
 	public String mostrarEstacion();
 	public boolean estaPrendido();
