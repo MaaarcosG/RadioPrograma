@@ -268,12 +268,11 @@ public class GUI_Radio {
 			}
 			/*Boton guardar espacio 1*/
 			if(e.getSource().equals(btn1)) {
-				txtPantalla.setText("Estacion " + radio.obtenerEstacion(1));
+				String frecuencia = radio.obtenerEstacion(1);
+				txtPantalla.setText(frecuencia);
 				/*Muestra un mensje de confirmacion*/
-				JOptionPane.showMessageDialog(null, "Se guardo correctamente " + radio.getFrecuencia());
+				JOptionPane.showMessageDialog(null, "Se guardo correctamente " + radio.mostrarEstacion());
 			}
-			
 		}
-		
 	}
 }
