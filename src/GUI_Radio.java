@@ -189,6 +189,7 @@ public class GUI_Radio {
 			/*Codigo para el boton de encender*/
 			if (e.getSource().equals(btnEncender)) {
 				JOptionPane.showMessageDialog(null, "LA RADIO SE ENCENDIO");
+				txtPantalla.setText("Esta escuchando " + radio.getFrecuencia());
 				/*Indicara que se encuentra encendido la radio*/
 				btnAtras.setEnabled(true);
 				btnAdelante.setEnabled(true);
@@ -227,10 +228,13 @@ public class GUI_Radio {
 				btn10.setEnabled(false);
 				btn11.setEnabled(false);
 				btn12.setEnabled(false);
+				txtPantalla.setText("");
 			}
 			/*Boton para cambiar la frecuencia*/
 			if (e.getSource().equals(btnCambiarFrec)) {
 				/*Condicion que sirve para indicar a que frecuencia esta cambiando*/
+				radio.cambioFrecuencia();
+				txtPantalla.setText("Esta escuchando: " + radio.getFrecuencia());
 				
 			}
 			/*Boton para cambiar la frecuencia*/

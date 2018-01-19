@@ -108,11 +108,11 @@ public class Radio implements Interfaz_Radio {
 	@Override
 	public String cambioFrecuencia() {
 		/*Si es FM cambiara a AM*/
-		if (frecActual.equals("fm")) {
+		if (frecActual.equals("87.9")) {
 			frecActual = "am";
 			frecActual = "530";
 			/*Si es AM cambiara FM*/
-		} else if (frecActual.equals("am")) {
+		} else if (frecActual.equals("530")) {
 			frecActual = "fm";
 			frecActual = "87.9";
 		}
@@ -168,5 +168,17 @@ public class Radio implements Interfaz_Radio {
 	public String obtenerEstacion(int pos) {
 		return ""	;
 	}
-
+	/**
+	 * @return the frecActual
+	 */
+	public String getFrecuencia() {
+		return frecActual;
+	}
+	/**
+	 * @param frecActual
+	 */
+	public void setFrecuencia(String frecActual) {
+		frecActual = this.frecActual;
+	}
+	
 }
