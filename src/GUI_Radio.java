@@ -12,6 +12,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 public class GUI_Radio {
+	
 	/*Atributos de la GUI*/
 	private JFrame frame;
 	private JTextField txtPantalla;
