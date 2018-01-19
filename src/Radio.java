@@ -168,6 +168,7 @@ public class Radio implements Interfaz_Radio {
 				frec = frecFM[pos];
 			}
 		}
+		/*Devuelve el valor de la frecuencia*/
 		return String.valueOf(frec);
 	}
 	/**
