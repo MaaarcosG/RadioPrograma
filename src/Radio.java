@@ -28,10 +28,12 @@ public class Radio implements Interfaz_Radio {
 	@Override
 	public String frecAdelante() {
 		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
+		
 		/*Condicion que nos ayuda a saber si sumar en AM o en FM*/
-		if(FA % 5 == 0) {
-			/*Si la estacion es igual a 1610, iniciara de nuevo el conteo*/
-			if(FA == 1610) {
+		
+		if(FA >= 530 && FA <= 1610) {
+			/*Si la estacion es mayor o igual a 1610, iniciara de nuevo el conteo*/
+			if(FA >= 1610) {
 				frecActual = "530.0";
 			} else {
 				/*Si no es igual, se sumara 10*/
@@ -39,13 +41,15 @@ public class Radio implements Interfaz_Radio {
 				frecActual = FA + "";
 			}
 		} else {
-			if(FA < 107.9 || FA > 87.9) {
-				/**/
-				if(FA == 107.9) {
+			if(FA >= 87.9 && FA <= 108.1) { /*Se adaptaron los limites debido a la naturaleza de la funcion y numeros*/
+				/*Si la frecuencia es mayor a 107.9 devuelve a la frec. inicial*/
+				if(FA >= 107.9) {
 					frecActual = "87.9";
+				
+				/*Si no se suma 10 */
 				} else {
 					FA += 0.2;
-					frecActual = FA + "";
+					frecActual = String.format("%.01f", FA); /* Da formato de 1 digito a la frec*/
 				}
 			}
 		}
@@ -59,23 +63,32 @@ public class Radio implements Interfaz_Radio {
 	public String frecAtras() {
 		float FA = Float.parseFloat(frecActual); /*Convertimos de String-Float*/
 		/*Condicion que nos ayuda a saber si sumar en AM o en FM*/
-		if(FA % 3 == 0) {
-			/*Si la estacion es igual a 1610, iniciara de nuevo el conteo*/
-			if(FA >= 1610) {
-				frecActual = "530.0";
-			} else {
-				/*Si no es igual, se sumara 10*/
+		if(FA >= 530 && FA <= 1610) {
+		
+				/*Si la estacion es menor o igual a 530 se ira a la estacion final*/
+				if (FA <= 530.0) {
+					frecActual = "1610.0";
+				}
+				/*Si no se restaran 10 */
+				
+				else {
 				FA -= 10;
-				frecActual = FA + "";
-			}
+				frecActual = FA + ""; 
+				}
+			
 		} else {
-			if(FA < 107.9 || FA > 87.9) {
-				/**/
-				if(FA >= 107.9) {
-					frecActual = "87.9";
-				} else {
-					FA -= 0.2;
-					frecActual = FA + "";
+			if(FA >= 87.9 && FA <= 108.1) { /*Se adaptaron los limites debido a la naturaleza de la funcion y numeros*/
+				
+					/*Si la estacion es menor  a 87.9 se ira a la estacion final*/
+					if (FA < 88.1) {
+						frecActual = "107.9";
+					}
+					/*Si no se restaran 10 */
+					else {
+						FA -= 0.2;
+						frecActual = String.format("%.01f", FA); /* Da formato de 1 digito a la frec*/
+					
+					
 				}
 			}
 		}
@@ -109,8 +122,7 @@ public class Radio implements Interfaz_Radio {
 	@Override
 	public String cambioFrecuencia() {
 		
-		float frec;
-		frec = Float.parseFloat(frecActual);
+		float frec = Float.parseFloat(frecActual); /* Convercion de string a float
 		
 		/*Si es FM cambiara a AM*/
 		if (frec>=530 && frec <= 1610) {
