@@ -20,6 +20,7 @@ public class GUI_Radio {
 	/*Atributos de la GUI*/
 	private JFrame frame;
 	private JTextField txtPantalla;
+	private JButton btnGuardar;
 	
 	/*Botones extras*/
 	public JRadioButton rdEncendido;
@@ -193,7 +194,27 @@ public class GUI_Radio {
 		btnApagar = new JButton("APAGAR");
 		btnApagar.setBounds(119, 238, 95, 23);
 		Radio.add(btnApagar);
-		btnApagar.addActionListener(new MiBoton());
+		
+		btnGuardar = new JButton("Guardar");
+		btnGuardar.setBounds(224, 238, 193, 23);
+		Radio.add(btnGuardar);
+		btnGuardar.addActionListener(new MiBoton());
+	}
+	/**
+	 * @return Interger.parseInt(guardar);
+	 */
+	public int GuardandoFM(){
+		/*Manda un mensaje que sirve para que escoga donde quiere guardar la estacion*/
+		String guardarFM = JOptionPane.showInputDialog("Escoga el numero de estacion que desea guardar: ");
+		return Integer.parseInt(guardarFM);
+	}
+	/*
+	 * @return 
+	 */
+	public int GuardandoAM() {
+		/*Manda un mensaje que sirve para que escoga donde quiere guardar la estacion*/
+		String guardarAM = JOptionPane.showInputDialog("Escoga el numero de estacion que desea guardar: ");
+		return Integer.parseInt(guardarAM);
 	}
 	private class MiBoton implements ActionListener{
 
@@ -202,6 +223,7 @@ public class GUI_Radio {
 			/*Codigo para el boton de encender*/
 			if (e.getSource().equals(btnEncender)) {
 				JOptionPane.showMessageDialog(null, "LA RADIO SE ENCENDIO");
+				radio.prender();
 				txtPantalla.setText("Esta escuchando " + radio.getFrecuencia());
 				/*Indicara que se encuentra encendido la radio*/
 				btnAtras.setEnabled(true);
@@ -266,13 +288,66 @@ public class GUI_Radio {
 				/*cadena*/
 				txtPantalla.setText("Esta escuchando " + nueva);
 			}
-			/*Boton guardar espacio 1*/
+			/*Boton 1 para mostrar los datos guardados*/
 			if(e.getSource().equals(btn1)) {
-				String frecuencia = radio.obtenerEstacion(1);
-				txtPantalla.setText(frecuencia);
-				/*Muestra un mensje de confirmacion*/
-				JOptionPane.showMessageDialog(null, "Se guardo correctamente " + radio.mostrarEstacion());
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(1));
+			}
+			/*Mostrar los datos guardados*/
+			if(e.getSource().equals(btnGuardar)) {
+				if(radio.mostrarEstacion().equals("87.9")) {
+					/*Guarda los datos*/
+					radio.guardarEstacionActual(GuardandoFM());
+				} else {
+					/*Guarda los datos*/
+					radio.guardarEstacionActual(GuardandoAM());
+				}
+			}
+			/*Boton 1 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn2)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(2));
+			}
+			/*Boton 3 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn3)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(3));
+			}
+			/*Boton 4 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn4)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(4));
+			} 
+			/*Boton 5 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn5)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(5));
+			}
+			/*Boton 6 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn6)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(6));
+			}
+			/*Boton 7 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn7)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(7));
+			}
+			/*Boton 8 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn8)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(8));
+			}
+			/*Boton 9 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn9)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(9));
+			}
+			/*Boton 10 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn10)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(10));
+			}
+			/*Boton 11 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn11)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(112));
+			}
+			/*Boton 12 para mostrar los datos guardados*/
+			if(e.getSource().equals(btn12)) {
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(12));
 			}
 		}
 	}
 }
+
+

@@ -112,9 +112,11 @@ public class Radio implements Interfaz_Radio {
 		/*Verifcaremos que el estado del radio este encendido*/
 		estadoDelRadio = true;
 		this.frecActual = "87.9";
+		
 		for(int i = 0; i <12; i++) {
 			this.frecAM[i] = "530";
 			this.frecFM[i] = "87.9";
+			System.out.println(this.frecAM[i]);
 		}
 		
 		return estadoDelRadio;
