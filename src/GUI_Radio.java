@@ -202,6 +202,7 @@ public class GUI_Radio {
 		btnApagar = new JButton("APAGAR");
 		btnApagar.setBounds(119, 238, 95, 23);
 		Radio.add(btnApagar);
+		btnApagar.addActionListener(new MiBoton());
 		
 		btnGuardar = new JButton("Guardar");
 		btnGuardar.setBounds(224, 238, 193, 23);
@@ -250,11 +251,14 @@ public class GUI_Radio {
 				btn10.setEnabled(true);
 				btn11.setEnabled(true);
 				btn12.setEnabled(true);
+				btnGuardar.setEnabled(true);
 			}
 			/*Condicion que funciona para apagar la radio*/
-			if(e.getSource().equals(btnApagar)) {
+			else if (e.getSource().equals(btnApagar)) {
 				JOptionPane.showMessageDialog(null, "LA RADIO SE APAGO");
-				/*False que sirve para que se bloque los botones y saber que se apagaron*/
+				radio.prender();
+				txtPantalla.setText("");
+				/*Indicara que se encuentra encendido la radio*/
 				btnAtras.setEnabled(false);
 				btnAdelante.setEnabled(false);
 				rdEncendido.setSelected(false);
@@ -271,7 +275,7 @@ public class GUI_Radio {
 				btn10.setEnabled(false);
 				btn11.setEnabled(false);
 				btn12.setEnabled(false);
-				txtPantalla.setText("");
+				btnGuardar.setEnabled(false);
 			}
 			/*Boton para cambiar la frecuencia*/
 			if (e.getSource().equals(btnCambiarFrec)) {
