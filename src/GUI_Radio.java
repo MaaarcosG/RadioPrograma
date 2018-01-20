@@ -353,7 +353,7 @@ public class GUI_Radio {
 			}
 			/*Boton 11 para mostrar los datos guardados*/
 			if(e.getSource().equals(btn11)) {
-				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(112));
+				txtPantalla.setText("Esta escuchando " + radio.obtenerEstacion(12));
 			}
 			/*Boton 12 para mostrar los datos guardados*/
 			if(e.getSource().equals(btn12)) {
