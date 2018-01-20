@@ -22,6 +22,13 @@ public class Radio implements Interfaz_Radio {
 		frecAM = new String[12];
 		frecFM = new String[12];
 	}
+	
+	
+	/* Devuelve la frec actual */
+	public String getFrecActual() {
+		return frecActual;
+	}
+
 	/**
 	 * Metodo con el cual la frecuencia ira sumanndo
 	 * @return frecActual
@@ -117,7 +124,7 @@ public class Radio implements Interfaz_Radio {
 		for(int i = 0; i <12; i++) {
 			this.frecAM[i] = "530";
 			this.frecFM[i] = "87.9";
-			System.out.println(this.frecAM[i]);
+			//System.out.println(this.frecAM[i]);
 		}
 		
 		return estadoDelRadio;
