@@ -19,6 +19,7 @@ import java.awt.Font;
  * @since 18 de enero 2018
  * @version beta 2.0.1
  * @propuse Esta clase tiene como objetivo generar la interfaz grafica de usuario
+ * 
 */
 
 public class GUI_Radio {

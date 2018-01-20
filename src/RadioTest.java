@@ -8,6 +8,7 @@ import org.junit.Test;
  * @author Marcos Gutierrrez 
  * @since 18 de enero 2018
  * @propuse Prueba de errores, esto permite realizar pruebas de JUnit en el programa calculadora 
+ * 
  */
 
 public class RadioTest {
